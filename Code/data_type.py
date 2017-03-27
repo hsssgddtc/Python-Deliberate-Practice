@@ -30,6 +30,8 @@ print(str_1[0])
 print(str_1[2:6])
 print(str_1[2:])
 print(str_1[2::2])
+print(str_1[-4:])
+print(str_1[-3:-1])
 
 ###Sequence/Concatenate
 print(str_1+str_1)
@@ -152,87 +154,208 @@ print(str_1.zfill(40))
 print(str_1.count('o',3,11))
 
 #Python List
+##Declaration
+list_1 = [1,2,3,4,5,6]
+list_2 = list((7,8,9,1,2,4))
 ##General Operation
-
 ###Index
+print(list_1[3])
 
 ###Slice
+print(list_1[2:4])
+print(list_1[0:3:2])
+print(list_1[-3:-1])
 
 ###Sequence
+print(list_1+list_2)
 
 ###Multiple
+print(list_1*2)
 
 ###Membership
+print(3 in list_1)
+print('a' in list_1)
 
 ###Length, Max and Min
-
-##Declaration
+print(len(list_2))
+print(max(list_2))
+print(min(list_2))
 
 ##Special Operation
+###Update
+list_1[3] = 7
+print(list_1)
+list_1[2:4] = list_2
+print(list_1)
+
+###Delete
+del list_1[3]
+print(list_1)
 
 ##Function
-
+list_1.append(10)
+print(list_1)
+print(list_1.count(1))
+list_1.extend(list_2)
+print(list_1)
+print(list_1.index(9))
+list_1.insert(4,11)
+print(list_1)
+print(list_1.pop(4))
+print(list_1)
+list_1.remove(9)
+print(list_1)
+list_1.reverse()
+print(list_1)
+list_1.sort(reverse=True)
+print(list_1)
 
 #Python Tuple
+##Declaration
+tup_1 = (1,2,3,4,5,6)
+tup_2 = tuple([7,8,9,1,2,4])
 ##General Operation
-
 ###Index
+print(tup_1[3])
 
 ###Slice
+print(tup_1[2:4])
+print(tup_1[0:3:2])
+print(tup_1[-3:-1])
 
 ###Sequence
+print(tup_1+tup_2)
 
 ###Multiple
+print(tup_1*2)
 
 ###Membership
+print(3 in tup_1)
+print('a' in tup_1)
 
 ###Length, Max and Min
-
-##Declaration
+print(len(tup_2))
+print(max(tup_2))
+print(min(tup_2))
 
 ##Special Operation
-
-##Function
+### Delete
+#del tup_1
+#print(tup_1)
 
 #Python Set
-##General Operation
-
-###Index
-
-###Slice
-
-###Sequence
-
-###Multiple
-
-###Membership
-
-###Length, Max and Min
-
 ##Declaration
+set_1 = {1,2,3,4,5,6}
+set_2 = set((3,4,5,6,7,8))
+##General Operation
+###Compare
+print(set_2 in set_1)
+print(set_2 not in set_1)
+print(set_2 == set_1)
+print(set_2 != set_1)
+print(set_2 < set_1)
+print(set_2 <= set_1)
+print(set_2 > set_1)
+print(set_2 >= set_1)
 
-##Special Operation
+###Relation
+print(set_1&set_2)
+print(set_1|set_2)
+print(set_1-set_2)
+print(set_1^set_2)
+set_1&=set_2
+print(set_1)
+set_1|=set_2
+print(set_1)
+set_1-=set_2
+print(set_1)
+set_1^=set_2
+print(set_1)
 
 ##Function
+set_1 = {1,2,3,4,5,6}
+set_2 = set((3,4,5,6,7,8))
+###All sets
+print(set_1.issubset(set_2))
+print(set_1.issuperset(set_2))
+print(set_1.union(set_2))
+print(set_1.intersection(set_2))
+print(set_1.difference(set_2))
+print(set_1.symmetric_difference(set_2))
+print(set_1.copy())
+
+###Mutable sets
+set_1.update(set_2)
+print(set_1)
+set_1.intersection_update(set_2)
+print(set_1)
+set_1.difference_update(set_2)
+print(set_1)
+set_1.symmetric_difference_update(set_2)
+print(set_1)
+set_1.add(9)
+print(set_1)
+set_1.remove(9)
+print(set_1)
+set_1.discard(9)
+print(set_1)
+print(set_1.pop())
+print(set_1)
+set_1.clear()
+print(set_1)
 
 #Python Dict
+##Declaration
+dict_1 = {"key1":"value1",12:34,'key2':'value2'}
 ##General Operation
-
 ###Index
+print(dict_1["key1"])
 
-###Slice
+###Assignment
+dict_1[56]=78
+print(dict_1)
 
-###Sequence
-
-###Multiple
+###Delete
+del dict_1[56]
+print(dict_1)
 
 ###Membership
+print(12 in dict_1)
 
 ###Length, Max and Min
-
-##Declaration
-
-##Special Operation
+print(len(dict_1))
+#print(max(dict_1))
+#print(min(dict_1))
 
 ##Function
+print(dict_1.get(12))
+print(dict_1.items())
+print(dict_1.keys())
+print(dict_1.values())
+print(dict_1.pop("key1"))
+print(dict_1)
+print(dict_1.popitem())
+print(dict_1.fromkeys(tup_1))
+dict_2 = {"key1":"value1",1:34,'key2':'value2'}
+dict_1.update(dict_2)
+print(dict_1)
 
+##Copy and Deepcopy
+"""
+1.copy() will only copy the father object and not its children
+2.deepcopy() will copy both the father and children object
+"""
+import copy
+a = [1, 2, 3, 4, ['a', 'b']] 
+
+b = a  
+c = copy.copy(a)  
+d = copy.deepcopy(a)  
+
+a.append(5)  
+a[4].append('c') 
+
+print('a = ', a)
+print('b = ', b)
+print('c = ', c)
+print('d = ', d)
